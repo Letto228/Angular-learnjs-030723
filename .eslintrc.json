@@ -1,38 +1,114 @@
 {
     "root": true,
     "ignorePatterns": ["projects/**/*"],
+    "env": {
+        "es6": true
+    },
+    "plugins": ["import"],
     "overrides": [
         {
             "files": ["*.ts"],
             "extends": [
                 "eslint:recommended",
-                "plugin:@typescript-eslint/recommended",
                 "plugin:@angular-eslint/recommended",
-                "plugin:@angular-eslint/template/process-inline-templates"
+                "plugin:@angular-eslint/template/process-inline-templates",
+                "plugin:import/recommended",
+                "plugin:sonarjs/recommended"
             ],
             "rules": {
-                "@angular-eslint/directive-selector": [
-                    "error",
+                "@typescript-eslint/dot-notation": "off",
+                "indent": "off",
+                "space-before-function-paren": "off",
+                "@typescript-eslint/space-before-function-paren": "error",
+                "keyword-spacing": "off",
+                "@typescript-eslint/keyword-spacing": "error",
+                "semi": "off",
+                "@typescript-eslint/semi": "error",
+                "prettier/prettier": ["off", { "endOfLine": "auto" }],
+                "@typescript-eslint/type-annotation-spacing": "error",
+                "space-before-blocks": "off",
+                "@typescript-eslint/space-before-blocks": "error",
+                "space-infix-ops": "off",
+                "@typescript-eslint/space-infix-ops": "error",
+                "lines-between-class-members": "off",
+                "@typescript-eslint/lines-between-class-members": "off",
+                "brace-style": "off",
+                "@typescript-eslint/brace-style": "error",
+                "no-unused-vars": "off",
+                "@typescript-eslint/no-unused-vars": "warn",
+                "block-spacing": "error",
+                "import/no-unresolved": "off",
+                "import/prefer-default-export": "off",
+                "class-methods-use-this": "off",
+                "no-useless-constructor": "off",
+                "@typescript-eslint/no-useless-constructor": "off",
+                "@typescript-eslint/unbound-method": [
+                    "off",
                     {
-                        "type": "attribute",
-                        "prefix": "app",
-                        "style": "camelCase"
+                        "ignoreStatic": true
                     }
                 ],
-                "@angular-eslint/component-selector": [
+                "@typescript-eslint/naming-convention": [
                     "error",
                     {
-                        "type": "element",
-                        "prefix": "app",
-                        "style": "kebab-case"
+                        "selector": "memberLike",
+                        "modifiers": ["private", "protected"],
+                        "format": ["camelCase"],
+                        "leadingUnderscore": "require"
+                    },
+                    {
+                        "selector": "objectLiteralProperty",
+                        "format": null
+                    },
+                    {
+                        "selector": "memberLike",
+                        "modifiers": ["public"],
+                        "format": ["camelCase"],
+                        "leadingUnderscore": "forbid"
+                    },
+                    {
+                        "selector": "variable",
+                        "format": ["camelCase"]
+                    },
+                    {
+                        "selector": "enum",
+                        "format": ["PascalCase"],
+                        "prefix": ["E"]
+                    },
+                    {
+                        "selector": "interface",
+                        "format": ["PascalCase"],
+                        "prefix": ["I"]
+                    },
+                    {
+                        "selector": "typeAlias",
+                        "format": ["PascalCase"],
+                        "prefix": ["T"]
+                    },
+                    {
+                        "selector": "variable",
+                        "format": ["PascalCase"],
+                        "modifiers": ["const", "global", "exported"],
+                        "prefix": ["C"]
+                    },
+                    {
+                        "selector": "typeParameter",
+                        "format": ["PascalCase"],
+                        "prefix": ["T"]
                     }
                 ]
             }
         },
         {
-            "files": ["*.html"],
+            "files": ["*.component.html"],
             "extends": ["plugin:@angular-eslint/template/recommended"],
-            "rules": {}
+            "rules": {
+                "max-len": ["error", { "code": 140 }]
+            }
+        },
+        {
+            "files": ["*.component.ts"],
+            "extends": ["plugin:@angular-eslint/template/process-inline-templates"]
         }
     ]
 }
