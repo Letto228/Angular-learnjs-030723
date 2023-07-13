@@ -1,0 +1,12 @@
+.example-card {
+    max-width: 100px;
+}
+
+.example-header-image {
+    background-size: cover;
+}
+
+.image_shop {
+    height: 400px;
+    width: 400px;
+}
