@@ -1,0 +1,24 @@
+<mat-card class="product-card" (click)="onBuyClicked($event)">
+    <mat-card-header>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image alt="Product Image" [src]="productImg.url" />
+    <mat-card-content>
+        <p>
+            Отличный планшет.не виснет, реагирует на нажатие моментально. Хоть и 3G но никаких
+            проблем стоит симка 4G лайт и работает как 4G. Камеры что фронтальная,что тыловая
+            ощущение что больше заявленных параметров. Качество снимков о́тличное. Хоть и пишут 2мп.
+            Вспышкой не пользовался. Но фонарик светит отлично батареи хватает на долго даже с
+            включенным интернетом. От юсби правда долго заряжается. А от сети влёт. Так что в машине
+            только держать на зарядке всё время, т.к батарея 4500амп. В общем первый раз вижу товар
+            который мог бы стоить дороже. Даже удивлён.
+        </p>
+    </mat-card-content>
+    <div class="product-card-price">
+        <span>Цена:</span>
+        <span>{{ productPrice }}</span>
+    </div>
+    <button class="product-card-button" (click)="onBuyClicked($event)">
+        <span>Купить</span>
+    </button>
+</mat-card>
