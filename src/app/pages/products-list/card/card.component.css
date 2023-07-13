@@ -1,0 +1,24 @@
+.example-card {
+    max-width: 400px;
+}
+
+.card-image {
+    padding: 0px 55px;
+}
+
+.card-button__left {
+    position: absolute;
+    top: 35%;
+    left: 5px;
+}
+
+.card-button__right {
+    position: absolute;
+    top: 35%;
+    right: 5px;
+}
+
+.card-price {
+    text-align: center;
+    margin: 20px 0px;
+}
