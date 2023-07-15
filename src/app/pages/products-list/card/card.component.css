@@ -1,0 +1,28 @@
+.product-card {
+    max-width: 500px;
+}
+
+.product-card__header {
+    margin-top: 15px;
+}
+
+.product-card__price {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.product-card__content {
+    display: grid;
+    place-content: center;
+
+    margin-top: 15px;
+}
+
+.product-card__actions {
+    display: grid;
+    place-content: center;
+}
+
+.product-card__image {
+    margin-top: 20px;
+}
