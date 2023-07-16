@@ -1,5 +1,12 @@
+<!-- <app-card class="card" (click)="onCardClick()"></app-card>
 <app-card class="card" (click)="onCardClick()"></app-card>
 <app-card class="card" (click)="onCardClick()"></app-card>
 <app-card class="card" (click)="onCardClick()"></app-card>
-<app-card class="card" (click)="onCardClick()"></app-card>
-<app-card class="card" (click)="onCardClick()"></app-card>
+<app-card class="card" (click)="onCardClick()"></app-card> -->
+
+<app-card
+    *ngFor="let item of products"
+    class="card"
+    [product]="item"
+    (addToCart)="handleAddToCart(item._id)"
+></app-card>
