@@ -1,9 +1,8 @@
 <mat-card class="example-card">
     <mat-card-header>
-      <mat-card-title>DEXP K61</mat-card-title>
-      <mat-card-subtitle>Планшет</mat-card-subtitle>
+      <mat-card-title>{{ product.name }}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image [src]="productImg" alt="Product alt text">
+    <img mat-card-image [src]="product.images[0].url" alt="Product alt text">
     <mat-card-content>
       <p>
         {{ productDescription }}
@@ -12,7 +11,7 @@
     <mat-card-actions class="product-card-bottom-block">
       <div class="product-price">
         <span>
-          {{ priceValue }}
+          {{ product.price }}
         </span>
         <span>
           {{ rouble }}
