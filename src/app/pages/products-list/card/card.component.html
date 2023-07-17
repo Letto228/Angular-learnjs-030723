@@ -1,0 +1,22 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{ product.name }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="product.images[0].url" alt="Product alt text">
+    <mat-card-content>
+      <p>
+        {{ productDescription }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions class="product-card-bottom-block">
+      <div class="product-price">
+        <span>
+          {{ product.price }}
+        </span>
+        <span>
+          {{ rouble }}
+        </span>
+      </div>
+      <button mat-button (click)="addToCard($event)">{{ addToCardText }}</button>
+    </mat-card-actions>
+  </mat-card>
