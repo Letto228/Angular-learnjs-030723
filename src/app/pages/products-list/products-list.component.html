@@ -1,5 +1,13 @@
-<app-card class="card" (click)="onCardClick()"></app-card>
-<app-card class="card" (click)="onCardClick()"></app-card>
-<app-card class="card" (click)="onCardClick()"></app-card>
-<app-card class="card" (click)="onCardClick()"></app-card>
-<app-card class="card" (click)="onCardClick()"></app-card>
+<!-- <app-card class="card" [product]="product[0]" (click)="onCardClick()"></app-card>
+<app-card class="card" [product]="product[1]" (click)="onCardClick()"></app-card>
+<app-card class="card" [product]="product[2]" (click)="onCardClick()"></app-card>
+<app-card class="card" [product]="product[3]" (click)="onCardClick()"></app-card>
+<app-card class="card" [product]="product[4]" (click)="onCardClick()"></app-card> -->
+
+<app-card
+    *ngFor="let product of products"
+    class="card"
+    [product]="product"
+    (click)="onCardClick()"
+    (productToBuy)="onBuyProduct($event)"
+></app-card>
