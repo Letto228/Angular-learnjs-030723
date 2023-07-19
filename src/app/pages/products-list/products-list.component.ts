@@ -1,23 +1,57 @@
-import {IProduct} from 'src/app/shared/products/product.interface';
+import {IProduct, IProduct} from 'src/app/shared/products/product.interface';
 import {Component} from '@angular/core';
-import {productsMock} from 'src/app/shared/products/products.mock';
+import {productsMock} from '../../shared/products/products.mock';
 
 @Component({
     selector: 'app-products-list',
     templateUrl: './products-list.component.html',
     styleUrls: ['./products-list.component.css'],
-    // encapsulation: ViewEncapsulation.Emulated,
 })
 export class ProductsListComponent {
-    readonly products: IProduct[] = productsMock;
+    readonly products = productsMock;
 
-    onCardClick() {
+    onProductBuy(id: IProduct['_id']) {
         // eslint-disable-next-line no-console
-        console.log('Card click');
+        console.log(id);
     }
 
-    handleAddToCart(id: string) {
-        // eslint-disable-next-line no-console
-        console.log(`Id ${id} added to cart`);
-    }
+    // constructor() {
+    //     // eslint-disable-next-line no-console
+    //     console.log('ProductsListComponent: constructor');
+    // }
+
+    // ngOnChanges(): void {
+    //     // eslint-disable-next-line no-console
+    //     console.log('ProductsListComponent: OnChanges');
+    // }
+
+    // ngOnInit(): void {
+    //     // eslint-disable-next-line no-console
+    //     console.log('ProductsListComponent: OnInit');
+    // }
+
+    // ngDoCheck(): void {
+    //     // eslint-disable-next-line no-console
+    //     console.log('ProductsListComponent: DoCheck');
+    // }
+
+    // ngAfterContentInit(): void {
+    //     // eslint-disable-next-line no-console
+    //     console.log('ProductsListComponent: AfterContentInit');
+    // }
+
+    // ngAfterContentChecked(): void {
+    //     // eslint-disable-next-line no-console
+    //     console.log('ProductsListComponent: ngAfterContentChecked');
+    // }
+
+    // ngAfterViewInit(): void {
+    //     // eslint-disable-next-line no-console
+    //     console.log('ProductsListComponent: AfterViewInit');
+    // }
+
+    // ngAfterViewChecked(): void {
+    //     // eslint-disable-next-line no-console
+    //     console.log('ProductsListComponent: AfterViewChecked');
+    // }
 }
