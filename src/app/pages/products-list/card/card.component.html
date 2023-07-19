@@ -1,8 +1,8 @@
-<mat-card *ngIf="productModel" class="example-card">
+<mat-card *ngIf="product" class="example-card">
     <img
         mat-card-image
-        alt="{{ productModel.subCategory }}"
         class="card-image"
+        [alt]="product.subCategory"
         [src]="returnCurrentImageSrc()"
     />
     <button mat-mini-fab color="basic" class="card-button__left" (click)="previousImage()">
@@ -13,12 +13,12 @@
     </button>
 
     <mat-card-content>
-        <mat-card-title>{{ productModel.name }}</mat-card-title>
+        <mat-card-title>{{ product.name }}</mat-card-title>
 
         <mat-divider></mat-divider>
 
         <mat-card-title class="card-price">
-            {{ productModel.price | currency : 'USD' }}
+            {{ product.price | currency : 'USD' }}
         </mat-card-title>
     </mat-card-content>
 
