@@ -1,4 +1,4 @@
-import {IProduct, IProduct} from 'src/app/shared/products/product.interface';
+import {IProduct} from 'src/app/shared/products/product.interface';
 import {Component} from '@angular/core';
 import {productsMock} from '../../shared/products/products.mock';
 
