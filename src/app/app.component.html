@@ -9,6 +9,7 @@
             <mat-list-item role="listitem">Item 3</mat-list-item>
         </mat-list>
     </ng-template>
+
     <!-- <div #first>
         <div #last></div>
     </div> -->
@@ -27,13 +28,27 @@
 
 <!-- <app-popup-host [template]="!closeTemplate ? first : null"></app-popup-host> -->
 
-<!-- <ng-template #first>
-    <h2>First</h2>
-    <p>Is first template</p>
+<ng-template #first>
+    <mat-card class="card">
+        <mat-card-header>
+            <h2>First</h2>
+        </mat-card-header>
+        <mat-card-content>
+            <p>Is first template</p>
+        </mat-card-content>
+    </mat-card>
 </ng-template>
 <ng-template #second>
-    <h2>Second</h2>
-    <p>Is second template</p>
-</ng-template> -->
+    <mat-card class="card">
+        <mat-card-header>
+            <h2>Second</h2>
+        </mat-card-header>
+        <mat-card-content>
+            <p>Is second template</p>
+        </mat-card-content>
+    </mat-card>
+</ng-template>
 
-<!-- <app-host-popup [template]></app-host-popup> -->
+<app-popup-host *ngIf="switchTemplate" [popupHost]="switchTemplate ? first : null"></app-popup-host>
+
+<!-- <app-popup-host [popupHost]="switchTemplate ? first : second"></app-popup-host> -->
