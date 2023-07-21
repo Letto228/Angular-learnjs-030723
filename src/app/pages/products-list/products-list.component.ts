@@ -16,7 +16,11 @@ export class ProductsListComponent {
         console.log('Card click');
     }
 
-    handleAddToCart(id: string) {
+    handleAddToCart(id: string | undefined) {
+        if (!id) {
+            return;
+        }
+
         // eslint-disable-next-line no-console
         console.log(`Id ${id} added to cart`);
     }
