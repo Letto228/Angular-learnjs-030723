@@ -11,10 +11,10 @@ import {IProduct} from '../../../shared/products/product.interface';
 export class CardComponent {
     // readonly product = productsMock[0];
     @Input() product: IProduct | undefined;
-    @Output() addToCart: EventEmitter<string> = new EventEmitter<string>();
+    @Output() addToCart = new EventEmitter<string | undefined>();
 
     onAddToCart() {
-        this.addToCart.emit(this.product?._id);
+        this.addToCart?.emit(this.product?._id);
     }
 
     isStarActive(starIndex: number): boolean | undefined {
