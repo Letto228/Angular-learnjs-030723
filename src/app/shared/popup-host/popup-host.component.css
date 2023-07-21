@@ -1,0 +1,26 @@
+.popup-host {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 10;
+
+    display: grid;
+    place-content: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-host__wrapper {
+    padding: 60px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+
+    z-index: 11;
+}
+
+.hidden {
+    display: none;
+}
