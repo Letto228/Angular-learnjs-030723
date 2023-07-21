@@ -17,9 +17,9 @@ export class CardComponent {
         this.addToCart?.emit(this.product?._id);
     }
 
-    isStarActive(starIndex: number): boolean | undefined {
+    isStarActive(starIndex: number): boolean {
         if (!this.product) {
-            return undefined;
+            return false;
         }
 
         return this.product.rating >= starIndex;
