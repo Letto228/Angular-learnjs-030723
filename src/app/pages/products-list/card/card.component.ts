@@ -9,6 +9,15 @@ import {IProduct} from 'src/app/shared/products/product.interface';
 export class CardComponent {
     @Input() product: IProduct | undefined;
 
+    // свойство templateProduct создано для имитации асинхронного запроса
+    templateProduct: IProduct | undefined;
+
+    constructor() {
+        setTimeout(() => {
+            this.templateProduct = this.product;
+        }, 1000);
+    }
+
     @Output() productToBuy: EventEmitter<IProduct['_id']> = new EventEmitter();
 
     onProductBuy(event: Event) {
