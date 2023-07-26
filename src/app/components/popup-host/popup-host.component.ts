@@ -1,7 +1,9 @@
 import {
     Component,
+    ElementRef,
     Input,
     OnChanges,
+    Renderer2,
     SimpleChanges,
     TemplateRef,
     ViewChild,
@@ -14,13 +16,15 @@ import {
     styleUrls: ['./popup-host.component.css'],
 })
 export class PopupHostComponent implements OnChanges {
-    @Input() popupHost: TemplateRef<unknown> | null = null;
+    @Input() templateRef: TemplateRef<unknown> | null = null;
 
     @ViewChild('viewport', {read: ViewContainerRef, static: true})
     private readonly viewport!: ViewContainerRef;
 
-    ngOnChanges({popupHost}: SimpleChanges): void {
-        if (popupHost) {
+    constructor(private readonly elementRef: ElementRef, private readonly renderer: Renderer2) {}
+
+    ngOnChanges({templateRef}: SimpleChanges): void {
+        if (templateRef) {
             this.insertView();
         }
     }
@@ -28,8 +32,13 @@ export class PopupHostComponent implements OnChanges {
     insertView() {
         this.viewport.clear();
 
-        if (this.popupHost) {
-            this.viewport.createEmbeddedView(this.popupHost);
+        if (this.templateRef) {
+            this.renderer.setStyle(this.elementRef.nativeElement, 'display', 'flex');
+            this.viewport.createEmbeddedView(this.templateRef);
+
+            return;
         }
+
+        this.renderer.setStyle(this.elementRef.nativeElement, 'display', 'none');
     }
 }
