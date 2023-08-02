@@ -4,29 +4,83 @@
     class="scroll-container"
 >
     <!-- Раскомментрировать для ДЗ -->
-    <!-- <ng-container
+    <ng-container
         *appPagination="
-            let productsGroup of products;
-            chankSize: 4;
+            let productsGroup of productsFromInput;
             let pageIndexes = pageIndexes;
-            let activeIndex = index;
+            let currentIndex = currentIndex;
             let next = next;
             let back = back;
-            let selectIndex = selectIndex
+            let firstPage = firstPage;
+            let lastPage = lastPage;
+            let currentPage = currentPage;
+            let updateChankSize = updateChankSize;
+            let productsInOnePage = $implicit
         "
-    > -->
-    <div class="cards">
-        <app-card
-            *ngFor="let product of productsFromInput; trackBy: trackById"
-            class="card"
-            [product]="product"
-            (buy)="onProductBuy($event)"
-        ></app-card>
-    </div>
-    <div class="pagination">
-        <!-- Add pagination control -->
-    </div>
-    <!-- </ng-container> -->
+    >
+        <div class="pagination">
+            <div>Выводить по :</div>
+
+            <button mat-raised-button (click)="updateChankSize(4)">4</button>
+            <button mat-raised-button (click)="updateChankSize(8)">8</button>
+
+            <div>
+                <button mat-mini-fab color="primary" (click)="firstPage(1)">
+                    <mat-icon
+                        aria-hidden="false"
+                        aria-label="Example home icon"
+                        fontIcon="first_page"
+                    ></mat-icon>
+                </button>
+
+                <button mat-mini-fab color="primary" (click)="back(currentIndex)">
+                    <mat-icon
+                        aria-hidden="false"
+                        aria-label="Example home icon"
+                        fontIcon="chevron_left"
+                    ></mat-icon>
+                </button>
+
+                <ng-container *ngFor="let idx of pageIndexes">
+                    <button
+                        mat-mini-fab
+                        color="{{ idx === currentIndex ? 'secondary' : 'primary' }}"
+                        (click)="currentPage(idx)"
+                    >
+                        {{ idx }}
+                    </button>
+                </ng-container>
+
+                <button mat-mini-fab color="primary" (click)="next(currentIndex)">
+                    <mat-icon
+                        aria-hidden="false"
+                        aria-label="Example home icon"
+                        fontIcon="chevron_right"
+                    ></mat-icon>
+                </button>
+
+                <button mat-mini-fab color="primary" (click)="lastPage(pageIndexes.length)">
+                    <mat-icon
+                        aria-hidden="false"
+                        aria-label="Example home icon"
+                        fontIcon="last_page"
+                    ></mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="cards">
+            <app-card
+                *ngFor="let product of productsInOnePage; trackBy: trackById"
+                class="card"
+                [product]="product"
+                (buy)="onProductBuy($event)"
+            ></app-card>
+        </div>
+        <div class="pagination">
+            <!-- Add pagination control -->
+        </div>
+    </ng-container>
 
     <!-- <app-card
         class="card"
