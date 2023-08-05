@@ -13,8 +13,10 @@ export class CardComponent {
     @Input() product: IProduct | undefined;
     @Output() addToCart = new EventEmitter<string | undefined>();
 
-    onAddToCart() {
+    onAddToCart($event: Event) {
         this.addToCart?.emit(this.product?._id);
+
+        $event.stopPropagation();
     }
 
     isStarActive(starIndex: number): boolean {
