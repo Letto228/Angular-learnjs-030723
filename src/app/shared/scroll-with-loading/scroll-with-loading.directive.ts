@@ -7,15 +7,14 @@ import {LoadDirection} from './load-direction.enum';
 export class ScrollWithLoadingDirective {
     @Output() loadData = new EventEmitter<LoadDirection>();
 
+    private readonly borderOffset = 100;
     private scrollPosition = 0;
     private scrollDirection: 'up' | 'down' | undefined;
 
     @HostListener('scroll', ['$event.target'])
     onScroll({scrollTop, scrollHeight, clientHeight}: HTMLElement): void {
-        const borderOffset = 100;
-
-        const nearTop = Math.abs(scrollTop) < borderOffset;
-        const nearBottom = Math.abs(clientHeight + scrollTop - scrollHeight) <= borderOffset;
+        const nearTop = Math.abs(scrollTop) < this.borderOffset;
+        const nearBottom = Math.abs(clientHeight + scrollTop - scrollHeight) <= this.borderOffset;
 
         this.getScrollDirection(scrollTop);
 
