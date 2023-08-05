@@ -14,7 +14,7 @@ export class CardComponent {
     @Output() addToCart = new EventEmitter<string | undefined>();
 
     onAddToCart($event: Event) {
-        this.addToCart?.emit(this.product?._id);
+        this.addToCart.emit(this.product?._id);
 
         $event.stopPropagation();
     }
