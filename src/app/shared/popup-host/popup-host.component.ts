@@ -20,9 +20,11 @@ export class PopupHostComponent implements OnChanges {
     private readonly viewport!: ViewContainerRef;
 
     ngOnChanges({template}: SimpleChanges): void {
-        if (template) {
-            this.template ? this.insertPopupTemplate(this.template) : this.viewport?.clear();
+        if (template && this.template) {
+            this.insertPopupTemplate(this.template);
         }
+
+        this.viewport?.clear();
     }
 
     private insertPopupTemplate(template: TemplateRef<unknown>) {
