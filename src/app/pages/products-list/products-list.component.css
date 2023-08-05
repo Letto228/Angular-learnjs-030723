@@ -34,7 +34,14 @@
 
 .pagination {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
     width: 100%;
+}
+
+.pagination__page-button--active {
+    color: #0d47a0;
+    font-weight: 700;
 }
