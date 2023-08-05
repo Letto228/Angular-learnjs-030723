@@ -21,9 +21,14 @@ export class ProductsListComponent implements OnInit {
         console.log(id);
     }
 
+    onLoad(direction: unknown) {
+        // eslint-disable-next-line no-console
+        console.log(`More data loaded: ${direction}`);
+    }
+
     get productsFromGet(): IProduct[] | null {
         // eslint-disable-next-line no-console
-        console.log('Get products');
+        // console.log('Get products');
 
         return this.products;
     }
