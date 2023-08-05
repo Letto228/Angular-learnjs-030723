@@ -6,7 +6,6 @@ import {
     ViewChild,
     OnChanges,
     SimpleChanges,
-    AfterViewInit,
 } from '@angular/core';
 
 @Component({
@@ -14,17 +13,11 @@ import {
     templateUrl: './popup-host.component.html',
     styleUrls: ['./popup-host.component.css'],
 })
-export class PopupHostComponent implements OnChanges, AfterViewInit {
+export class PopupHostComponent implements OnChanges {
     @Input() template: TemplateRef<unknown> | null = null;
 
     @ViewChild('viewport', {read: ViewContainerRef})
     private readonly viewport!: ViewContainerRef;
-
-    ngAfterViewInit(): void {
-        if (this.template) {
-            this.insertPopupTemplate(this.template);
-        }
-    }
 
     ngOnChanges({template}: SimpleChanges): void {
         if (template) {
