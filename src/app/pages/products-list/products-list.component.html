@@ -8,5 +8,5 @@
     *ngFor="let item of products"
     class="card"
     [product]="item"
-    (addToCart)="handleAddToCart(item._id)"
+    (addToCart)="handleAddToCart($event)"
 ></app-card>
