@@ -20,10 +20,6 @@ export class CardComponent {
     }
 
     isStarActive(starIndex: number): boolean {
-        if (!this.product) {
-            return false;
-        }
-
-        return this.product.rating >= starIndex;
+        return !!(this.product && this.product.rating >= starIndex);
     }
 }
