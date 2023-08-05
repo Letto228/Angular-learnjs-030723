@@ -7,18 +7,35 @@ import {LoadDirection} from './load-direction.enum';
 export class ScrollWithLoadingDirective {
     @Output() loadData = new EventEmitter<LoadDirection>();
 
+    private scrollPosition = 0;
+    private scrollDirection: 'up' | 'down' | undefined;
+
     @HostListener('scroll', ['$event.target'])
-    onScroll(target: HTMLElement): void {
-        const viewportHeight = target.clientHeight;
-        const currentScrollTop = target.scrollTop;
+    onScroll({scrollTop, scrollHeight, clientHeight}: HTMLElement): void {
         const borderOffset = 100;
 
-        const nearTop = Math.abs(currentScrollTop) < borderOffset;
-        const nearBottom =
-            Math.abs(viewportHeight + currentScrollTop - target.scrollHeight) <= borderOffset;
+        const nearTop = Math.abs(scrollTop) < borderOffset;
+        const nearBottom = Math.abs(clientHeight + scrollTop - scrollHeight) <= borderOffset;
 
-        if (nearTop || nearBottom) {
-            this.loadData.emit(nearTop ? LoadDirection.Up : LoadDirection.Down);
+        this.getScrollDirection(scrollTop);
+
+        switch (true) {
+            case this.scrollDirection === 'down' && nearBottom:
+                this.loadData.emit(LoadDirection.Down);
+                break;
+            case this.scrollDirection === 'up' && nearTop:
+                this.loadData.emit(LoadDirection.Up);
+                break;
         }
+    }
+
+    private getScrollDirection(currentScrollPosition: number) {
+        if (currentScrollPosition > this.scrollPosition) {
+            this.scrollDirection = 'down';
+        } else if (currentScrollPosition < this.scrollPosition) {
+            this.scrollDirection = 'up';
+        }
+
+        this.scrollPosition = currentScrollPosition;
     }
 }
