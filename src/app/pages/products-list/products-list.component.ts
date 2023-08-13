@@ -20,6 +20,7 @@ export class ProductsListComponent implements OnInit {
     // );
     readonly products$ = this.productsStoreService.products$;
 
+    value = '';
     // for easy
     name = 'Мышь';
 
