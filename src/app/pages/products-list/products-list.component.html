@@ -2,31 +2,6 @@
     *ngIf="products$ | async as productsFromInput; else loader; let productsFromNgIf"
     class="scroll-container"
 >
-    <!-- easy -->
-    <!-- <ng-container
-		*appPagination="
-			let productsGroup of (products | productsFilter : name);
-			chankSize: 4;
-			let pageIndexes = pageIndexes;
-			let activeIndex = index;
-			let next = next;
-			let back = back;
-			let selectIndex = selectIndex
-		"
-	> -->
-
-    <!-- hard -->
-    <!-- <ng-container
-        *appPagination="
-            let productsGroup of products | filterByProperty : propertyName : searchPropertyValue;
-            chankSize: 4;
-            let pageIndexes = pageIndexes;
-            let activeIndex = index;
-            let next = next;
-            let back = back;
-            let selectIndex = selectIndex
-        "
-    > -->
     <div>
         <mat-form-field class="example-form-field">
             <mat-label>Введите имя продукта</mat-label>
@@ -36,11 +11,11 @@
             </button>
         </mat-form-field>
     </div>
-
+    <!-- easy -->
     <ng-container
         *appPagination="
             let productsGroup of productsFromInput | productsFilter : value;
-            chankSize: 9;
+            chankSize: 4;
             let pageIndexes = pageIndexes;
             let activeIndex = index;
             let next = next;
@@ -48,6 +23,18 @@
             let selectIndex = selectIndex
         "
     >
+        <!-- hard -->
+        <!-- <ng-container
+        *appPagination="
+            let productsGroup of productsFromInput | filterByProperty : propertyName : searchPropertyValue;
+            chankSize: 4;
+            let pageIndexes = pageIndexes;
+            let activeIndex = index;
+            let next = next;
+            let back = back;
+            let selectIndex = selectIndex
+        "
+    >  -->
         <div class="cards">
             <app-card
                 *ngFor="let product of productsGroup; trackBy: trackById"

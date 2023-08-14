@@ -10,6 +10,7 @@ import {ProductsListComponent} from './products-list.component';
 import {CardModule} from './card/card.module';
 import {PaginationModule} from '../../shared/pagination/pagination.module';
 import {MyAsyncModule} from '../../shared/my-async/my-async.module';
+import {FilterByPropertyModule} from 'src/app/shared/filter-by-property/filter-by-property.module';
 
 @NgModule({
     declarations: [ProductsListComponent],
@@ -24,6 +25,7 @@ import {MyAsyncModule} from '../../shared/my-async/my-async.module';
         ProductsFilterModule,
         MatInputModule,
         FormsModule,
+        FilterByPropertyModule,
     ],
     exports: [ProductsListComponent],
 })
