@@ -20,12 +20,13 @@ export class ProductsListComponent implements OnInit {
     // );
     readonly products$ = this.productsStoreService.products$;
 
+    value = '';
     // for easy
     name = 'Мышь';
 
     // for hard
-    readonly propertyName = 'feedbacksCount' as const; // keyof IProduct
-    searchPropertyValue = 2;
+    readonly propertyName = 'name' as const; // keyof IProduct
+    searchPropertyValue = 'Мышь';
 
     // constructor(private readonly changeDetectorRef: ChangeDetectorRef) {}
     // constructor(@Inject(ProductsStoreService) private readonly productsStoreService: ProductsStoreService) {}

@@ -2,34 +2,19 @@
     *ngIf="products$ | async as productsFromInput; else loader; let productsFromNgIf"
     class="scroll-container"
 >
+    <div>
+        <mat-form-field class="example-form-field">
+            <mat-label>Введите имя продукта</mat-label>
+            <input matInput type="text" [(ngModel)]="value" />
+            <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value = ''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
     <!-- easy -->
-    <!-- <ng-container
-		*appPagination="
-			let productsGroup of (products | productsFilter : name);
-			chankSize: 4;
-			let pageIndexes = pageIndexes;
-			let activeIndex = index;
-			let next = next;
-			let back = back;
-			let selectIndex = selectIndex
-		"
-	> -->
-
-    <!-- hard -->
-    <!-- <ng-container
-        *appPagination="
-            let productsGroup of products | filterByProperty : propertyName : searchPropertyValue;
-            chankSize: 4;
-            let pageIndexes = pageIndexes;
-            let activeIndex = index;
-            let next = next;
-            let back = back;
-            let selectIndex = selectIndex
-        "
-    > -->
     <ng-container
         *appPagination="
-            let productsGroup of productsFromInput;
+            let productsGroup of productsFromInput | productsFilter : value;
             chankSize: 4;
             let pageIndexes = pageIndexes;
             let activeIndex = index;
@@ -38,6 +23,18 @@
             let selectIndex = selectIndex
         "
     >
+        <!-- hard -->
+        <!-- <ng-container
+        *appPagination="
+            let productsGroup of productsFromInput | filterByProperty : propertyName : searchPropertyValue;
+            chankSize: 4;
+            let pageIndexes = pageIndexes;
+            let activeIndex = index;
+            let next = next;
+            let back = back;
+            let selectIndex = selectIndex
+        "
+    >  -->
         <div class="cards">
             <app-card
                 *ngFor="let product of productsGroup; trackBy: trackById"
