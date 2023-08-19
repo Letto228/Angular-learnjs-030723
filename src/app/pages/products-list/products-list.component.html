@@ -3,20 +3,19 @@
     class="scroll-container"
 >
     <!-- easy -->
-    <!-- <ng-container
-		*appPagination="
-			let productsGroup of (products | productsFilter : name);
-			chankSize: 4;
-			let pageIndexes = pageIndexes;
-			let activeIndex = index;
-			let next = next;
-			let back = back;
-			let selectIndex = selectIndex
-		"
-	> -->
-
-    <!-- hard -->
-    <!-- <ng-container
+    <ng-container
+        *appPagination="
+            let productsGroup of productsFromInput | productsFilter : name;
+            chankSize: 4;
+            let pageIndexes = pageIndexes;
+            let activeIndex = index;
+            let next = next;
+            let back = back;
+            let selectIndex = selectIndex
+        "
+    >
+        <!-- hard -->
+        <!-- <ng-container
         *appPagination="
             let productsGroup of products | filterByProperty : propertyName : searchPropertyValue;
             chankSize: 4;
@@ -27,7 +26,7 @@
             let selectIndex = selectIndex
         "
     > -->
-    <ng-container
+        <!-- <ng-container
         *appPagination="
             let productsGroup of productsFromInput;
             chankSize: 4;
@@ -37,7 +36,7 @@
             let back = back;
             let selectIndex = selectIndex
         "
-    >
+    > -->
         <div class="cards">
             <app-card
                 *ngFor="let product of productsGroup; trackBy: trackById"
